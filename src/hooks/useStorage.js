@@ -26,7 +26,7 @@ const useStorage = () => {
         try {
             let passwords = await getItem(key);
             let myPasswords = passwords.filter( (password) => {
-                return (passwords !== item)
+                return (password !== item)
             });
             await AsyncStorage.setItem(key, JSON.stringify(myPasswords));
             return myPasswords;
@@ -34,12 +34,8 @@ const useStorage = () => {
             console.log("Erro ao deletar", error);
         }
     }
-
-    return (
-        getItem,
-        saveItem,
-        removeItem
-    )
+    
+    return { getItem, saveItem, removeItem };
 
 }
 
